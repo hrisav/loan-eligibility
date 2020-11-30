@@ -18,4 +18,5 @@ Findings:
 - Missing values were imputed.
 - EDA was performed to find out the key features on which Loan_Status is dependent.
 - Encoding was done on categorical variables.
+- Scaling was done on Training data.
 - Accuracy was found out in case of KNN, Decision Tree, Logistic Regression (along with Cross Validation and Hyperparameter Tuning)
