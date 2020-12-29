@@ -3,20 +3,37 @@
 Problem Statement
 -
 
-Dream Housing Finance company deals in all kinds of home loans. They have presence across all urban, semi urban, and rural areas. Customer first applies for home loan and after that company validates the customer eligibility for loan. Company wants to automate the loan eligibility process (real time) based on customer detail provided while filling online application form. These details are Gender, Marital Status, Education, Number of Dependents, Income, Loan Amount, Credit History, and others. To automate this process, they have provided a dataset to identify the customers segments that are eligible for loan amount so that they can specifically target these customers.
+PaySim simulates mobile money transactions based on a sample of real transactions extracted from one month of financial logs from a mobile money service implemented in an African country. The original logs were provided by a multinational company, who is the provider of the mobile financial service which is currently running in more than 14 countries all around the world. This synthetic dataset is scaled down 1/4 of the original dataset and it is created just for Kaggle.
 
 Variable Description
 -
 
-Loan_ID, Gender, Married, Dependents, Education, Self_Employed, ApplicantIncome, CoapplicantIncome, LoanAmount, Loan_Amount_Term, Credit_History, Property_Area, Loan_Status
+step - maps a unit of time in the real world. In this case 1 step is 1 hour of time. Total steps 744 (30 days simulation).
 
-Train data: 614, 13
+type - CASH-IN, CASH-OUT, DEBIT, PAYMENT and TRANSFER.
+
+amount - amount of the transaction in local currency.
+
+nameOrig - customer who started the transaction
+
+oldbalanceOrg - initial balance before the transaction
+
+newbalanceOrig - new balance after the transaction
+
+nameDest - customer who is the recipient of the transaction
+
+oldbalanceDest - initial balance recipient before the transaction. Note that there is not information for customers that start with M (Merchants).
+
+newbalanceDest - new balance recipient after the transaction. Note that there is not information for customers that start with M (Merchants).
+
+isFraud - This is the transactions made by the fraudulent agents inside the simulation. In this specific dataset the fraudulent behavior of the agents aims to profit by taking control or customers accounts and try to empty the funds by transferring to another account and then cashing out of the system.
+
+isFlaggedFraud - The business model aims to control massive transfers from one account to another and flags illegal attempts. An illegal attempt in this dataset is an attempt to transfer more than 200.000 in a single transaction.
 
 Findings:
 -
 
-- Missing values were imputed.
-- EDA was performed to find out the key features on which Loan_Status is dependent.
+- EDA was performed to find out the key features.
+- Feature engineering was done to create some key input features.
 - Encoding was done on categorical variables.
-- Scaling was done on Training data.
-- Accuracy was found out in case of KNN, Decision Tree, Logistic Regression (along with Cross Validation and Hyperparameter Tuning)
+- Model building was done using Decision Tree Classifier.
